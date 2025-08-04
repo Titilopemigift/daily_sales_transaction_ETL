@@ -1,0 +1,4 @@
+terraform/*terraform*
+airflow_docker/config
+airflow_docker/logs
+airflow_docker/plugins

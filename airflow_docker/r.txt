@@ -1,0 +1,2 @@
+awswrangler==3.12.1
+Faker==37.4.2
