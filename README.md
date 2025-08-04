@@ -39,7 +39,7 @@ Below is a visual representation of the successful DAG execution in Airflow (Gra
 
 ---
 
-##  Tools & Technologies Used
+##  Tools Used
 
 | Tool          | Purpose                                |
 |---------------|----------------------------------------|
