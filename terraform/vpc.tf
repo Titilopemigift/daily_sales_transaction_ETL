@@ -19,10 +19,10 @@ resource "aws_vpc" "redshift_vpc" {
 }
 
 resource "aws_subnet" "public_subnet" {
-  vpc_id     = aws_vpc.redshift_vpc.id
-  cidr_block = "10.0.1.0/24"
+  vpc_id                  = aws_vpc.redshift_vpc.id
+  cidr_block              = "10.0.1.0/24"
   map_public_ip_on_launch = true
-  availability_zone = "eu-north-1a"
+  availability_zone       = "eu-north-1a"
 
 
   tags = {
@@ -32,10 +32,10 @@ resource "aws_subnet" "public_subnet" {
 }
 
 resource "aws_subnet" "private_subnet" {
-  vpc_id     = aws_vpc.redshift_vpc.id
-  cidr_block = "10.0.2.0/24"
+  vpc_id                  = aws_vpc.redshift_vpc.id
+  cidr_block              = "10.0.2.0/24"
   map_public_ip_on_launch = true
-  availability_zone = "eu-north-1b"
+  availability_zone       = "eu-north-1b"
 
 
 
@@ -151,18 +151,18 @@ resource "aws_iam_role" "redshift_role" {
 
 
 resource "aws_iam_policy" "redshift_policy" {
-  name        = "redshift_policy"
+  name = "redshift_policy"
 
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
-  policy      = jsonencode({
+  policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
       {
-        Sid = "AllowRedshiftS3Access",
+        Sid    = "AllowRedshiftS3Access",
         Effect = "Allow",
-        Action = ["s3:ListBucket", 
-                    "s3:GetObject"
+        Action = ["s3:ListBucket",
+          "s3:GetObject"
         ],
         Resource = [
           "arn:aws:s3:::trnx-data",
@@ -173,8 +173,4 @@ resource "aws_iam_policy" "redshift_policy" {
   })
 }
 
-resource "aws_iam_role_policy_attachment" "attach_redshift_s3_access" {
-  role       = aws_iam_role.redshift_role.name
-  policy_arn = aws_iam_policy.redshift_policy.arn
-}
 
