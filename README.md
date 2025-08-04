@@ -49,7 +49,7 @@ Below is a visual representation of the successful DAG execution in Airflow (Gra
 | **AWS S3**    | Cloud storage for raw data             |
 | **AWS Redshift** | Cloud data warehouse                 |
 | **awswrangler** | Efficient upload to S3 using parquet |
-| **Faker**     | Generating synthetic data              |
+| **Faker**     | Generating sales data              |
 
 ---
 
