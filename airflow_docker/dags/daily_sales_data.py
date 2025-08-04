@@ -35,7 +35,7 @@ def generate_and_upload_sales_data():
         aws_secret_access_key=secret_key,
         region_name=region_key
     )
-    num_records = random.randint(100_000, 300_000)
+    num_records = random.randint(500_000, 1_000_000)
     records = []
 
     for i in range(num_records):
