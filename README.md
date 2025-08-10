@@ -25,6 +25,8 @@ The pipeline consists of the following steps:
 3. **Data Warehouse Load**  
    - Uses Redshift's `COPY` command to ingest data directly from S3 into a Redshift table.
 
+   ![alt text](docs/daily_sales_table.png)
+
 4. **Orchestration (Airflow)**  
    - DAGs schedule and control the end-to-end workflow, from data generation to loading.
 
@@ -32,7 +34,8 @@ The pipeline consists of the following steps:
 
 Below is a visual representation of the successful DAG execution in Airflow (Graph View), showing the orchestration of tasks from data generation to loading into Redshift.
 
-![alt text](airflow_graph_view.png)
+![alt text](docs/airflow_graph_view.png)
+
 
 5. **Provisioning (Terraform)**  
    - Manages the Redshift cluster, IAM roles, S3 bucket, and supporting infrastructure.
