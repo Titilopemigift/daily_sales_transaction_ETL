@@ -161,8 +161,9 @@ resource "aws_iam_policy" "redshift_policy" {
       {
         Sid    = "AllowRedshiftS3Access",
         Effect = "Allow",
-        Action = ["s3:ListBucket",
-          "s3:GetObject"
+        Action = [
+            "s3:ListBucket",
+            "s3:GetObject"
         ],
         Resource = [
           "arn:aws:s3:::trnx-data",
@@ -173,4 +174,9 @@ resource "aws_iam_policy" "redshift_policy" {
   })
 }
 
+
+resource "aws_iam_role_policy_attachment" "attach_redshift_s3_access" {
+  role       = aws_iam_role.redshift_role.name
+  policy_arn = aws_iam_policy.redshift_policy.arn
+}
 
