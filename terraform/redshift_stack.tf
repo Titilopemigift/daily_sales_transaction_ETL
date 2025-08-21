@@ -19,8 +19,8 @@ resource "aws_redshift_cluster" "redshift_cluster" {
 resource "aws_redshift_subnet_group" "redshift_subnet_group" {
   name = "redshift-subnet-group"
   subnet_ids = [
-    aws_subnet.public_subnet.id,
-    aws_subnet.private_subnet.id
+    aws_subnet.public_subnet1.id,
+    aws_subnet.public_subnet2.id
   ]
 }
 

@@ -18,7 +18,7 @@ resource "aws_vpc" "redshift_vpc" {
   }
 }
 
-resource "aws_subnet" "public_subnet" {
+resource "aws_subnet" "public_subnet1" {
   vpc_id                  = aws_vpc.redshift_vpc.id
   cidr_block              = "10.0.1.0/24"
   map_public_ip_on_launch = true
@@ -26,12 +26,12 @@ resource "aws_subnet" "public_subnet" {
 
 
   tags = {
-    Name = "public-subnet"
+    Name = "public-subnet1"
   }
 
 }
 
-resource "aws_subnet" "private_subnet" {
+resource "aws_subnet" "public_subnet2" {
   vpc_id                  = aws_vpc.redshift_vpc.id
   cidr_block              = "10.0.2.0/24"
   map_public_ip_on_launch = true
@@ -40,7 +40,7 @@ resource "aws_subnet" "private_subnet" {
 
 
   tags = {
-    Name = "private-subnet"
+    Name = "public-subnet2"
   }
 }
 
@@ -70,13 +70,13 @@ resource "aws_route" "internet_access" {
 }
 
 #Route table association
-resource "aws_route_table_association" "public_association" {
-  subnet_id      = aws_subnet.public_subnet.id
+resource "aws_route_table_association" "public_association1" {
+  subnet_id      = aws_subnet.public_subnet1.id
   route_table_id = aws_route_table.redshift_route_table.id
 }
 
-resource "aws_route_table_association" "private_association" {
-  subnet_id      = aws_subnet.private_subnet.id
+resource "aws_route_table_association" "public_association2" {
+  subnet_id      = aws_subnet.public_subnet2.id
   route_table_id = aws_route_table.redshift_route_table.id
 }
 
